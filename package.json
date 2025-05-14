@@ -1,6 +1,6 @@
 {
 	"name": "mithril-ssr-template",
-  "author": "Pau García Chiner",
+	"author": "Pau García Chiner",
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
@@ -9,6 +9,6 @@
 		"start": "sin build && sin start"
 	},
 	"dependencies": {
-		"sin": "github:pauchiner/sinjs#62cc4c09a5c1d4b34dac6928fd9acea3f9a52aa4"
+		"sin": "github:pauchiner/sinjs#a09d62a1873f0e1a2acf69d5d2106fcbabb692cf"
 	}
 }
