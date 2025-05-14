@@ -1,4 +1,4 @@
-# Mithril SSR
+# sin.js w/ mithri.js
 
 This template allows to use mithril.js with SSR using sin.js
 
