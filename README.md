@@ -1,6 +1,25 @@
 # Plantilla de mithril con sin.js
 
-## Mandamientos
+## 🔧 Requisitos
+- [Google Chrome](https://www.google.com/chrome)
+- [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
+## ⚡ Comienzo rapido
+
+1. Descarga la plantilla
+```bash
+git clone https://github.com/pauchiner/sin-template.git
+```
+2. Instala las dependencias
+```bash
+npm install
+```
+3. Levanta el servidor de desarrollo
+```bash
+npm run dev
+```
+
+## 📏 Reglas
 Una serie de reglas para poder usar sin.js
 
 ### Siempre que usemos `m.route()`, usaremos export default:
