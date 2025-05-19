@@ -1,5 +1,5 @@
 {
-	"name": "mithril-ssr-template",
+	"name": "sinjs-template",
 	"author": "Pau García Chiner",
 	"version": "1.0.0",
 	"type": "module",
@@ -9,6 +9,6 @@
 		"start": "sin build && sin start"
 	},
 	"dependencies": {
-		"sin": "github:pauchiner/sinjs#a09d62a1873f0e1a2acf69d5d2106fcbabb692cf"
+		"sin": "file:../sinjs"
 	}
 }
