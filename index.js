@@ -58,17 +58,17 @@ const Home = {
         m("p", "here you have a list of examples:"),
       ]),
       m("nav", { style: { display: "flex", flexDirection: "column", gap: "16px", width: "100%" } }, [
-        m(m.route.Link, { href: "timer" }, "Timer"),
+        // m(m.route.Link, { href: "timer" }, "Timer"),
         m(m.route.Link, { href: "counter" }, "Counter"),
         m(m.route.Link, { href: "todo" }, "Todo App"),
         m(m.route.Link, { href: "async" }, "Async Loading"),
-        m(m.route.Link, { href: "posts/1" }, "Dynamic Posts"),
+        // m(m.route.Link, { href: "posts/1" }, "Dynamic Posts"),
         m(m.route.Link, { href: "gallery" }, "Image Gallery"),
         m(m.route.Link, { href: "pagination" }, "Pagination"),
         m(m.route.Link, { href: "infinite" }, "Infinite Scroll"),
-        m(m.route.Link, { href: "local-storage" }, "Local Storage"),
+        //m(m.route.Link, { href: "local-storage" }, "Local Storage"),
         m(m.route.Link, { href: "search" }, "Search & Filter"),
-        m(m.route.Link, { href: "markdown" }, "Markdown Previewer"),
+        // m(m.route.Link, { href: "markdown" }, "Markdown Previewer"),
       ])
     ),
   ]
