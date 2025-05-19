@@ -1,45 +1,71 @@
-# sin.js w/ mithri.js
+# Plantilla de mithril con sin.js
 
-This template allows to use mithril.js with SSR using sin.js
+## Mandamientos
+Una serie de reglas para poder usar sin.js
 
-## 🔨 Development Setup
-
-### 1. Install dependencies
-```bash
-npm install
+### Siempre que usemos `m.route()`, usaremos export default:
+```js
+// ❌
+m.route({}, "/", paginas);
+// ✅ 
+export default m.route({}, "/", paginas);
 ```
 
-### 2. Start the development server
-```bash
-npm run dev
+### Para declarar estilos globales
+```html
+<!--❌-->
+<style>
+  body {
+    margin: 0;
+  }
+</style>
+```
+```js
+// ✅ 
+m.css`
+  body {
+    margin: 0;
+  }
+`
 ```
 
-## 🚀 Production Setup
-
-### 1. Bundle the javascript modules
+### Para usar archivos staticos (imagenes, json...)
+Debereis de tener todo metido dentro de la carpeta `+public`
 ```bash
-npm run build
++public
+  │ mi_imagen.png
+  │ pruebas.json
+  │ estilo.css
+  ╰ favicon.ico
+index.js
 ```
 
-This will create a folder named `+build` with two files in it:
-- `index.js`: This contains all the modules and code of your proyect.
-- `index.js.map`: This file maps the original code structure for debugging propurses.
-
-### 2. Start the production server
-```bash
-npm start
+### Para declarar scripts, styles y metadata lo haremos en el context
+```html
+<!--❌-->
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mi pagina</title>
+        <script src="https://components.digitalvalue.es/lib/mithril.min.js"></script>
+    </head>
+</html>
 ```
-
-You will see something like this:
-```bash
-> sin-template@1.0.0 start /Users/pauchiner/Developer/sin-template
-> sin build && sin start
-
-🔥 Built in 78.141166
-HTTP Listening on 80
+```js
+// ✅ 
+const context = {
+    document: {
+        title: "Mi pagina",
+        lang: "es",
+        head: [
+          m("script", { src: "https://cdn.jsdelivr.net/npm/marked/marked.min.js" }),
+          m("meta", { charset: "UTF-8" }),
+        ]
+    }
+}
+ 
+export default m.route(context, "/", paginas);
 ```
-
-Now access to your `localhost:80` in the browser to see your page with SSR!
 
 ## ©️ License
 Digital Value 2025 - All rights reserved.
