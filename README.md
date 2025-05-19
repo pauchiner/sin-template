@@ -66,6 +66,3 @@ const context = {
  
 export default m.route(context, "/", paginas);
 ```
-
-## ©️ License
-Digital Value 2025 - All rights reserved.
