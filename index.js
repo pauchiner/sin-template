@@ -17,42 +17,14 @@ m.css`
     margin: 0;
     width: 100%;
     height: 100%;
+  
     font-family: monospace;
   }
 `
 
-const Layout = {
-  view: (vnode) => {
-    return m(
-      "div",
-      {
-        style: {
-          gap: "16px",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          fontFamily: "monospace",
-          flexDirection: "column",
-          justifyContent: "center",
-        },
-      },
-      m("main", {
-        style: {
-          gap: "16px",
-          display: "flex",
-          maxWidth: "900px",
-          alignItems: "center",
-          flexDirection: "column",
-        }
-      }, vnode.children)
-    )
-  }
-}
-
 const Home = {
   view: () => [
-    m(Layout,
+    m("div",
       m("div", [
         m("h1", "Welcome to sin.js"),
         m("p", "here you have a list of examples:"),
@@ -62,7 +34,7 @@ const Home = {
         m(m.route.Link, { href: "counter" }, "Counter"),
         m(m.route.Link, { href: "todo" }, "Todo App"),
         m(m.route.Link, { href: "async" }, "Async Loading"),
-        // m(m.route.Link, { href: "posts/1" }, "Dynamic Posts"),
+        m(m.route.Link, { href: "posts/1" }, "Dynamic Posts"),
         m(m.route.Link, { href: "gallery" }, "Image Gallery"),
         m(m.route.Link, { href: "pagination" }, "Pagination"),
         m(m.route.Link, { href: "infinite" }, "Infinite Scroll"),
@@ -77,7 +49,7 @@ const Home = {
 const Counter = {
   count: 0,
   view: () => (
-    m(Layout, [
+    m("div", [
       m("h2", `Count: ${Counter.count}`),
       m("section", {
         style: {
@@ -96,7 +68,7 @@ const Counter = {
 
 const Post = {
   view: ({ attrs }) => [
-    m(Layout,
+    m("div",
       m("h1", `This is post ${attrs.id}`),
       m("div", { style: { display: "flex", gap: "32px" } }, [
         m(m.route.Link, { href: `posts/${Number(attrs.id) - 1}` }, 'previous post'),
@@ -118,7 +90,7 @@ const Async = {
     }, 2000);
   },
   view: ({ state }) => {
-    return m(Layout, [
+    return m("div", [
       m("p", state.loading ? "Loading..." : state.data),
       m(m.route.Link, { href: '/' }, "go back")
     ])
@@ -134,7 +106,7 @@ const LocalStorage = {
     localStorage.setItem("theme", vnode.state.theme);
   },
   view: vnode => {
-    return m(Layout, { class: vnode.state.theme }, [
+    return m("div", { class: vnode.state.theme }, [
       m("p", `Current theme: ${vnode.state.theme}`),
       m("button", { onclick: () => LocalStorage.toggleTheme(vnode) }, "Toggle Theme"),
       m(m.route.Link, { href: '/' }, "go back")
@@ -145,7 +117,7 @@ const LocalStorage = {
 const Todo = {
   todos: [],
   text: "",
-  view: () => m(Layout, [
+  view: () => m("div", [
     m("h2", "TO-DO"),
     m("div", { style: { display: "flex", gap: "8px" } }, [
 
@@ -170,7 +142,7 @@ const Todo = {
 
 const Markdown = {
   input: "# Hello",
-  view: () => m(Layout, [
+  view: () => m("div", [
     m("h2", "Markdown Previewer"),
     m("textarea", {
       style: "width: 100%;",
@@ -187,7 +159,7 @@ const Markdown = {
 
 const Gallery = {
   images: Array.from({ length: 256 }, (_, i) => `https://picsum.photos/200?random=${i}`),
-  view: () => m(Layout, [m("div.gallery", { style: "display: flex flex-wrap: wrap;" }, [Gallery.images.map(src =>
+  view: () => m("div", [m("div.gallery", { style: "display: flex flex-wrap: wrap;" }, [Gallery.images.map(src =>
     m("img", { src, loading: "lazy", style: "width: 32px; height: 32px; margin: 5px;" }),
   ),
   m("div", { style: "width: 100%; display: flex; justify-content: center;" }, [
@@ -209,7 +181,7 @@ const Timer = {
     }, 1000);
   },
   onremove: () => clearInterval(Timer.interval),
-  view: () => m(Layout, [
+  view: () => m("div", [
     m("h2", `Seconds passed: ${Timer.count}`),
     m("section", {
       style: {
@@ -228,7 +200,7 @@ const Timer = {
 const Search = {
   query: "",
   items: ["Apple", "Banana", "Orange", "Mango"],
-  view: () => m(Layout, [
+  view: () => m("div", [
     m("input[type=text]", {
       placeholder: "Search...",
       oninput: e => Search.query = e.target.value
@@ -251,7 +223,7 @@ const Infinite = {
       m.redraw();
     }
   },
-  view: () => m(Layout, [
+  view: () => m("div", [
     m("h2", "Infinite Scroll Example"),
     m("div", {
       style: { height: '300px', overflowY: 'auto', width: '100%' },
@@ -270,7 +242,7 @@ const Pagination = {
   view: () => {
     const start = (Pagination.state.page - 1) * Pagination.state.perPage;
     const pageItems = Pagination.state.items.slice(start, start + Pagination.state.perPage);
-    return m(Layout, [
+    return m("div", [
       m("h2", "Pagination Example"),
       m("ul", pageItems.map(i => m("li", i))),
       m("div", [

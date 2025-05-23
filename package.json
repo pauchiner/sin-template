@@ -9,6 +9,6 @@
 		"start": "sin build && sin start"
 	},
 	"dependencies": {
-		"sin": "github:pauchiner/sinjs#fdd9d04aae44e9c8ce35b42ea6bf17aa8b055b6c"
+		"sin": "github:pauchiner/sinjs#519f4fcd57421d466f7c0e9930e71ffe65c676b9"
 	}
 }
